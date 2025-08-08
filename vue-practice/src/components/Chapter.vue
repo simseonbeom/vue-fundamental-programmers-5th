@@ -1,39 +1,49 @@
 <!-- 
 
-v-bind와 v-on을 함께 사용하면 폼 입력 요소에 양방향 데이터 바인딩이 가능합니다.
-vue는 브라우저의 Event를 그대로 사용합니다. 
+vue의 리스트 렌더링은 v-for 디렉티브를 사용하여 만들 수 있습니다.
 
-v-model은 input값을 바인딩괸 상태와 자동으로 동기화됩니다. 이벤트 핸들러 x 
-
-v-model은 텍스트뿐만 아니라 체크박스, 라디오, 드롭다운등 다양한 인터렉션 태그들에게 사용가능
 
 -->
-
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
 
-const text = ref('');
+let id = 0;
+// for(const a of arr ){
 
-
-// const onChange = (e:Event) => {
-//   const target = e.target as HTMLInputElement;
-  
-//   // console.log('changed');
-
-//   text.value = target.value
 // }
+
+const todos = ref([
+  {id:id++, text:'HTML 배우기'},
+  {id:id++, text:'CSS 배우기'},
+  {id:id++, text:'JavaScript 배우기'},
+  {id:id++, text:'Vue 배우기'},
+])
 
 </script>
 
 <template>
   
-  <input type="text" v-model="text">
-  <p> 입력 값 : {{ text }}</p>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      {{ todo.text }}
+      <button type="button">❌</button>
+    </li>
+  </ul>
 
 </template>
 
 <style scoped>
+
+ul{
+  li{
+    margin-bottom: 1rem;
+  }
+}
+
+button{
+  margin-left: 2rem;
+}
 
 </style>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 
 import Chapter from './components/Chapter.vue';
-import Model from './components/Model.vue';
+// import VIf from './components/v-if.vue';
+// import Model from './components/Model.vue';
 // import RefVsReactive from './components/RefVsReactive.vue';
+
 
 
 
@@ -15,7 +17,8 @@ import Model from './components/Model.vue';
   <hr>
   <!-- <RefVsReactive /> -->
    
-  <Model />
+  <!-- <Model /> -->
+   <!-- <v-if /> -->
 
 </template>
 
