@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import TodoList from './TodoList.vue';
 
 
 const todos = ref([
@@ -19,7 +19,9 @@ const todos = ref([
     <h1>할 일 목록</h1>
 
     <!--TodoList 컴포넌트를 사용해서 todos 데이터 리스트 렌더링 -->
-    <TodoList/>
+    <TodoList
+      :todos="todos"
+    />
     
   </div>
 </template>
