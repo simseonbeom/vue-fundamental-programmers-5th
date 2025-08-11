@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import TodoList from './TodoList.vue';
+import TodoStats from './TodoStats.vue';
 
 
 const todos = ref([
@@ -10,6 +11,22 @@ const todos = ref([
 ]);
 
 
+function handleDeleteTodo(id:number){
+  const index = todos.value.findIndex(t => t.id === id);
+  if(index > -1){
+    todos.value.splice(index,1);
+  }
+}
+
+function handleToggleTodo(id:number){
+  const todo = todos.value.find(t => t.id === id);
+  if(todo){
+    todo.completed = !todo.completed;
+  }
+}
+
+// 파생 상태
+const completedCount = computed(() => todos.value.filter(t => t.completed).length)
 
 
 </script>
@@ -18,9 +35,26 @@ const todos = ref([
   <div class="todo-app">
     <h1>할 일 목록</h1>
 
-    <!--TodoList 컴포넌트를 사용해서 todos 데이터 리스트 렌더링 -->
+    <!-- 
+    
+      1. TodoForm 컴포넌트 만들기
+      2. input 값 ref로 가져오기
+      3. 가져온 값 emit으로 부모 컴포넌트에 전달하기 
+      4. 전달된 emit 함수 실행하기
+
+    -->
+    <TodoForm/>
+
+
+    <TodoStats
+      :total="todos.length"
+      :completed="completedCount"
+    />
+
     <TodoList
       :todos="todos"
+      @toggle-todo="handleToggleTodo"
+      @delete-todo="handleDeleteTodo"
     />
     
   </div>
