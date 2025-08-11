@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { inject } from 'vue';
-import type { ScoreContext } from '../store/score';
+import { scoreKey, type ScoreContext } from '../store/score';
 
 
-const ctx = inject('scoreKey');
+const ctx = inject(scoreKey);
 
 if(!ctx){
   throw new Error('...')

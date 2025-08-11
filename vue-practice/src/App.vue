@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
+
 import Chapter from './components/Chapter.vue';
+import ScoreProvider from './store/ScoreProvider.vue';
+
 // import VIfFor from './components/v-if-for.vue';
 // import VIf from './components/v-if.vue';
 // import Model from './components/Model.vue';
@@ -12,8 +15,12 @@ import Chapter from './components/Chapter.vue';
 <template>
   
   <!-- <TodoApp/> -->
+
+  <ScoreProvider>
+    <Chapter />
+  </ScoreProvider>
   
-  <Chapter />
+  
   <!-- <hr> -->
   <!-- <RefVsReactive /> -->
   <!-- <Model /> -->

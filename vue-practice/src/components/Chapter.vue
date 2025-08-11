@@ -3,23 +3,16 @@
 
 <script setup lang="ts">
 
-import { provide, ref } from 'vue';
+import { inject, provide, ref } from 'vue';
 import ChildComp from './ChildComp.vue';
-import { scoreKey } from '../store/score';
+import { scoreKey, type ScoreContext } from '../store/score';
 
 
-const score = ref(3);
-const comment = ref('');
 
-const updateScore = (v:number) => {
-  score.value = v;
-}
+const ctx = inject(scoreKey);
 
-const updateComment = (v:string) => {
-  comment.value = v;
-}
 
-provide(scoreKey,{score,comment,updateScore,updateComment});
+const { score, comment } = ctx as ScoreContext;
 
 
 </script>
